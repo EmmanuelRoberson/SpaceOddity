@@ -10,25 +10,14 @@ namespace Camera
     {
         [SerializeField] private Transform _objectOfFocus;
 
-        // Determines how fast this object should follow the object of focus
-        public float FollowSpeed;
-
         // Internal instead of private so custom editor class(PlayerCameraFollowBehaviourEditor) has access
-        [SerializeField] private bool FollowSmoothly;
-        [SerializeField] [HideInInspector] private float _smoothTime = 0.4f;
-        internal Vector3 SmoothVelocity;
+        public bool FollowSmoothly;
+        [HideInInspector] public float SmoothTime = 0.4f;
+        private Vector3 _smoothVelocity;
 
         private Transform _selfTransform;
 
-        internal float SmoothTime
-        {
-            get => _smoothTime;
-        }
-
-        internal bool FollowSmoothlyGetter
-        {
-            get => FollowSmoothly;
-        }
+ 
 
         // Start is called before the first frame update
         void Start()
@@ -57,7 +46,7 @@ namespace Camera
 
             // Calculate the next position for this object using Vector3.SmoothDamp, then assign it this transform.
             _selfTransform.position =
-                Vector3.SmoothDamp(_selfTransform.position, targetPosition, ref SmoothVelocity, _smoothTime);
+                Vector3.SmoothDamp(_selfTransform.position, targetPosition, ref _smoothVelocity, SmoothTime);
         }
     }
 }
@@ -72,7 +61,7 @@ public class PlayerCameraFollowBehaviourEditor : Editor
     {
         // Assign each serialized property.
         _smoothFollowSerializedProperty =
-            serializedObject.FindProperty(nameof(PlayerCameraFollowBehaviour.FollowSmoothlyGetter));
+            serializedObject.FindProperty(nameof(PlayerCameraFollowBehaviour.FollowSmoothly));
         _smoothTimeSerializedProperty =
             serializedObject.FindProperty(nameof(PlayerCameraFollowBehaviour.SmoothTime));
 

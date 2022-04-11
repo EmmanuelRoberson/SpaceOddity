@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace Enemy
+namespace Player
 {
-    public class AttributeBehaviour : MonoBehaviour
+    public class PlayerAttributeBehaviour : MonoBehaviour
     {
         // Fields must be able to be accessed by other objects but protected from being modified - applied const
 
         // Primary stats. Public for now to play around with values in game.
         // Physical
-        public int strength;
-        public int psp;
-        public int resilience;
-        public int speed;
+        public int strength=40;
+        public int psp=30;
+        public int resilience=80;
+        public int speed=30;
 
         // Mental
-        public int esp;
-        public int charm;
-        public int alacrity;
+        public int esp=60;
+        public int charm=75;
+        public int alacrity=23;
 
         // Getters and setters for when values are private. 
         /* 
@@ -51,6 +51,26 @@ namespace Enemy
         {
             int newValue = attribute + value;
             return newValue;
+        }
+
+        // Functions to get dynamic values that will potentially rely on armor, weapon, and general skill points in other scripts chosen at play time.
+        public int getTurn(int alacrity, int speed)
+        {
+            int turn = alacrity * speed;
+            return turn;
+        }
+        public int getDefenderAP()
+        {
+            return getAlacrity();
+        }
+        public int getAttackerAP()
+        {
+            return getSpeed();
+        }
+        public double determineHitChance(double atkSkillPercent, int speed, int psp, int distance)
+        {
+            double hitChance = (atkSkillPercent + (speed * 0.1)) + ((psp * 0.1) - (0.4 * distance));
+            return hitChance;
         }
 
     }

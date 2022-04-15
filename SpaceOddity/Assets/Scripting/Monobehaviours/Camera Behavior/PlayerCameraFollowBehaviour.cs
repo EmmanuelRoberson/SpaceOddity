@@ -37,6 +37,7 @@ namespace Camera
                 SmoothFollow();
             else
                 transform.position = _objectOfFocus.position;
+
         }
 
         void SmoothFollow()
@@ -47,6 +48,16 @@ namespace Camera
             // Calculate the next position for this object using Vector3.SmoothDamp, then assign it this transform.
             _selfTransform.position =
                 Vector3.SmoothDamp(_selfTransform.position, targetPosition, ref _smoothVelocity, SmoothTime);
+        }
+
+        public Vector3 FocusObjectUp
+        {
+            get => _objectOfFocus.up;
+        }
+
+        public Vector3 FocusObjectForward
+        {
+            get => _objectOfFocus.forward;
         }
     }
 }

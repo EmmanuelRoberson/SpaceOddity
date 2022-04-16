@@ -53,5 +53,26 @@ namespace Enemy
             return newValue;
         }
 
+
+        // Functions to get dynamic values that will potentially rely on armor, weapon, and general skill points in other scripts chosen at play time. Taken from Kombat manual.
+        public int getTurn(int alacrity, int speed)
+        {
+            int turn = alacrity * speed;
+            return turn;
+        }
+        public int getDefenderAP()
+        {
+            return getAlacrity();
+        }
+        public int getAttackerAP()
+        {
+            return getSpeed();
+        }
+        public double determineHitChance(double atkSkillPercent, int speed, int psp, int distance)
+        {
+            double hitChance = (atkSkillPercent + (speed * 0.1)) + ((psp * 0.1) - (0.4 * distance));
+            return hitChance;
+        }
+
     }
 }

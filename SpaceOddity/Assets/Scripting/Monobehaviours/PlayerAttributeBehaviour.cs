@@ -69,7 +69,7 @@ namespace Player
         }
         public double determineHitChance(double atkSkillPercent, int speed, int psp, int distance)
         {
-            double hitChance = (atkSkillPercent + (speed * 0.1)) + ((psp * 0.1) - (0.4 * distance));
+            double hitChance = (atkSkillPercent + (speed * 0.01)) + ((psp * 0.01) - (0.04 * distance));
             return hitChance;
         }
 

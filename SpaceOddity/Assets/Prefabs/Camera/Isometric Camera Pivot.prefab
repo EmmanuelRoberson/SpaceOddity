@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810720576601396771}
   - component: {fileID: 810720576601396780}
+  - component: {fileID: 1990562719}
   m_Layer: 0
   m_Name: Isometric Camera Pivot
   m_TagString: Untagged
@@ -47,6 +48,19 @@ MonoBehaviour:
   _objectOfFocus: {fileID: 0}
   FollowSmoothly: 0
   SmoothTime: 0.4
+--- !u!114 &1990562719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810720576601396768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6d85a8387a3ee47927a170a579878a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSmoothTime: 0.4
 --- !u!1 &810720577000269684
 GameObject:
   m_ObjectHideFlags: 0
